@@ -27,6 +27,14 @@ vim.o.undoreload = 10000 -- при перезагрузке файла
 vim.o.sessionoptions =
   "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+vim.cmd([[
+  augroup CursorColor
+    autocmd!
+    autocmd ColorScheme * hi Cursor guifg=#ff0000 guibg=#ff0000
+    " autocmd ColorScheme * hi CursorLine guibg=#ff1234
+  augroup END
+]])
+
 -- Прозрачный фон
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

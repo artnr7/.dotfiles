@@ -85,9 +85,9 @@ zsh-syntax-highlighting
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # export DISPLAY=:1
 # export QT_QPA_PLATFORM=xcb
@@ -123,7 +123,12 @@ eval "$(pyenv virtualenv-init -)"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias m="make"
+alias n="nvim"
+alias n.="nvim ."
+alias ga="git add"
+alias gc="git commit"
+alias gps="git push"
 
 # if [[ "$TERM_PROGRAM" == "vscode" || "$ITERM_PROFILE" ]]; then
 

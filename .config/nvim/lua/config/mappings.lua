@@ -6,18 +6,19 @@ local map = function(keys, func, desc, mode)
 end
 
 -- Main
---map("C-s", ":w<CR>", "Save us!")
+-- Hotkets like in IDE's
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save us!" })
+keymap("n", "<C-w>", ":q<CR>", { noremap = true, silent = true, desc = "Close the window" })
 
 -- Alt + стрелки (как в IDE)
-map("i", "<A-j>", "<C-o>j", { desc = "Down" })
-map("i", "<A-k>", "<C-o>k", { desc = "Up" })
-map("i", "<A-h>", "<C-o>h", { desc = "Left" })
-map("i", "<A-l>", "<C-o>l", { desc = "Right" })
+-- map("i", "<A-j>", "<C-o>j:startinsert<CR>", { desc = "Down" })
+-- map("i", "<A-k>", "<C-o>k", { desc = "Up" })
+-- map("i", "<A-h>", "<C-o>h", { desc = "Left" })
+-- map("i", "<A-l>", "<C-o>l", { desc = "Right" })
 
--- Ctrl + стрелки (по словам)
-map("i", "<C-j>", "<C-o>gj", { desc = "Next line" })
-map("i", "<C-k>", "<C-o>gk", { desc = "Prev line" })
+-- -- Ctrl + стрелки (по словам)
+-- map("i", "<C-j>", "<C-o>gj", { desc = "Next line" })
+-- map("i", "<C-k>", "<C-o>gk", { desc = "Prev line" })
 
 -- Быстрый конец/начало файла
 map("i", "<C-G>", "<C-o>G", { desc = "End of file" })
