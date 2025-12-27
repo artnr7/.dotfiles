@@ -19,6 +19,8 @@ vim.cmd([[
   highlight CursorLine guibg=#1e1e2e guifg=NONE
 ]])
 
+vim.cmd("highlight ColorColumn ctermbg=LightRed guibg=LightRed")
+
 vim.opt.rtp:prepend(lazypath)
 
 -- Make sure to setup `mapleader` and `maplocalleader` before
