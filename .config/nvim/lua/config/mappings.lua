@@ -8,7 +8,12 @@ end
 -- Main
 -- Hotkets like in IDE's
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save us!" })
-keymap("n", "<C-w>", ":q<CR>", { noremap = true, silent = true, desc = "Close the window" })
+keymap(
+  "n",
+  "<C-w>",
+  ":q<CR>",
+  { noremap = true, silent = true, nowait = true, desc = "Close the window" }
+)
 
 -- Alt + стрелки (как в IDE)
 -- map("i", "<A-j>", "<C-o>j:startinsert<CR>", { desc = "Down" })
