@@ -10,7 +10,7 @@ return {
   config = function()
     require("neo-tree").setup({
       auto_clean_after_session_restore = false,
-      close_if_last_window = true, -- Закрыть neo-tree, если это последнее окно
+      -- close_if_last_window = true, -- Закрыть neo-tree, если это последнее окно
       window = {
         width = 25,
         -- mappings = {
@@ -29,13 +29,13 @@ return {
       },
       default_component_configs = {
         icon = {
-          -- folder_closed = "",
-          -- folder_open = "",
-          -- folder_empty = "",
-
-          folder_closed = "→",
-          folder_open = "↓",
+          folder_closed = "",
+          folder_open = "",
           folder_empty = "",
+
+          -- folder_closed = "→",
+          -- folder_open = "↓",
+          -- folder_empty = "",
         },
       },
     })
