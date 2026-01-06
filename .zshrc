@@ -126,8 +126,12 @@ source $ZSH/oh-my-zsh.sh
 alias m="make"
 alias n="nvim"
 alias n.="nvim ."
+
+alias g="git"
 alias ga="git add"
+alias ga.="git add ."
 alias gc="git commit"
+alias gcm="git commit -m"
 alias gps="git push"
 
 # if [[ "$TERM_PROGRAM" == "vscode" || "$ITERM_PROFILE" ]]; then
