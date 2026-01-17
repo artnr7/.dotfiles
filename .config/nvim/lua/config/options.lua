@@ -5,6 +5,7 @@ vim.g.have_nerd_font = true
 vim.cmd(
   "set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 )
+vim.opt.wrap = false
 vim.opt.nu = true
 -- vim.opt.relativenumber = true
 vim.opt.mouse = "a"

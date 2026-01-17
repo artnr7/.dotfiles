@@ -24,6 +24,7 @@ return {
       },
     })
 
+    -- LSP servers
     mason_lspconfig.setup({
       automatic_enable = true,
       auto_install = true,
@@ -37,10 +38,16 @@ return {
       },
     })
 
+    -- Other tools
     mason_tool_installer.setup({
       automatic_enable = true,
+      auto_install = true,
       ensure_installed = {
         -- Formatters
+        -- golang
+        "goimports",
+        "gofumpt",
+        "golines",
         "shfmt",
         "clang-format",
         "black", -- python
@@ -50,8 +57,8 @@ return {
         "ruff", -- python
         -- "vale",
         "stylua",
-        auto_update = true,
-        auto_install = true,
+        -- auto_update = true,
+        -- auto_install = true,
         -- automatically install / update on startup. If set to false nothing
         -- will happen on startup. You can use :MasonToolsInstall or
         -- :MasonToolsUpdate to install tools and check for updates.
@@ -69,7 +76,7 @@ return {
         -- This is only relevant when you are using 'run_on_start'. It has no
         -- effect when running manually via ':MasonToolsInstall' etc....
         -- Default: nil
-        debounce_hours = 144, -- at least 5 hours between attempts to install/update
+        debounce_hours = 0, -- at least 5 hours between attempts to install/update
       },
     })
   end,

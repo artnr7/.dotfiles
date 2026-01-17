@@ -261,7 +261,7 @@ return {
             unusedparams = true,
           },
           staticcheck = true,
-          gofumpt = true,
+          gofumpt = false, -- Лучше настраивать отдельно
         },
       },
     })

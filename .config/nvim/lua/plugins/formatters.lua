@@ -7,8 +7,6 @@ return {
       formatters_by_ft = {
         c = { "clang-format" },
         cpp = { "clang-format" },
-        -- go = { "goimports" },
-
         bash = { "shfmt" },
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
@@ -17,6 +15,7 @@ return {
         rust = { "rustfmt", lsp_format = "fallback" },
         -- Conform will run the first available formatter
         javascript = { "prettierd", "prettier", stop_after_first = true },
+        go = { "goimports", "gofumpt", "golines", lsp_format = "fallback" },
       },
       formatters = {
         stylua = {
@@ -33,20 +32,32 @@ return {
             "Unix",
           },
         },
+        golines = {
+          prepend_args = {
+            "-m",
+            "80",
+            "--shorten-comments",
+            -- "-t",
+            -- "2",
+          },
+        },
       },
     })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "c, cpp, bash, lua",
-      callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
-    require("conform").setup({
-      format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 5000,
-        lsp_format = "fallback",
-      },
-    })
+    -- vim.api.nvim_create_autocmd("BufWritePre", { -- Autoformat before write
+    --   pattern = "c, cpp, bash, lua",
+    --   callback = function(args)
+    --     require("conform").format({ bufnr = args.buf })
+    --   end,
+    -- })
+    vim.keymap.set("n", "<C-s>", function()
+      require("conform").format({ lsp_format = "fallback" })
+    end, { desc = "Format on manual save" })
+    -- require("conform").setup({
+    --   format_on_save = {
+    --     -- These options will be passed to conform.format()
+    --     timeout_ms = 5000,
+    --     lsp_format = "fallback",
+    --   },
+    -- })
   end,
 }
