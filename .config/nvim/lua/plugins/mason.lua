@@ -40,7 +40,7 @@ return {
 
     -- Other tools
     mason_tool_installer.setup({
-      automatic_enable = true,
+      auto_enable = true,
       auto_install = true,
       ensure_installed = {
         -- Formatters
