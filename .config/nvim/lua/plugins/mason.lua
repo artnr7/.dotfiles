@@ -26,7 +26,7 @@ return {
 
     -- LSP servers
     mason_lspconfig.setup({
-      automatic_enable = true,
+      auto_enable = true,
       auto_install = true,
       ensure_installed = {
         -- I don't know why but lua_ls doesn't work
