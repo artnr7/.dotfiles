@@ -16,6 +16,8 @@ return {
         -- Conform will run the first available formatter
         javascript = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofumpt", "golines", lsp_format = "fallback" },
+        -- sql = { "pgformatter", lsp_format = "fallback" },
+        sql = { "sqlfmt" },
       },
       formatters = {
         stylua = {
@@ -40,6 +42,15 @@ return {
             -- "-t",
             -- "2",
           },
+        },
+        pgformatter = {
+          prepend_args = {
+            "--keyword-case=3", -- UPPERCASE ключевые слова
+            "--line-number", -- номера строк
+            "--spaces", -- пробелы вокруг операторов
+            "$FILE",
+          },
+          stdin_buffer = false, -- pgformatter не читает stdin
         },
       },
     })

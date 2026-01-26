@@ -47,10 +47,12 @@ return {
         -- golang
         "goimports",
         "gofumpt",
-        "golines",
-        "shfmt",
+        "golines", -- go
+        "shfmt", -- shell files
         "clang-format",
         "black", -- python
+        -- "pgformatter", -- postgresql
+        "sqlfmt", -- sql
         -- Linters
         "luacheck",
         "cpplint",
