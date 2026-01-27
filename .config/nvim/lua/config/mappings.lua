@@ -5,6 +5,13 @@ local map = function(keys, func, desc, mode)
   vim.keymap.set(mode, keys, func, { desc = "Default: " .. desc })
 end
 
+vim.keymap.set(
+  "n",
+  "<leader>e",
+  vim.diagnostic.open_float,
+  { desc = "Открыть диагностику" }
+)
+
 -- Main
 -- Hotkets like in IDE's
 keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save us!" })

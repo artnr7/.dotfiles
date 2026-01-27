@@ -5,7 +5,7 @@ vim.g.have_nerd_font = true
 vim.cmd(
   "set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 )
-vim.opt.wrap = false
+-- vim.opt.wrap = false -- перенос строки
 vim.opt.nu = true
 -- vim.opt.relativenumber = true
 vim.opt.mouse = "a"
@@ -35,6 +35,16 @@ vim.cmd([[
     " autocmd ColorScheme * hi CursorLine guibg=#ff1234
   augroup END
 ]])
+
+vim.diagnostic.config({
+  float = {
+    border = "rounded", -- Опционально, для вида
+    win_opts = {
+      wrap = true, -- Перенос строк
+      linebreak = true, -- Перенос по словам
+    },
+  },
+})
 
 -- Прозрачный фон
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
