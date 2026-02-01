@@ -19,7 +19,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.guicursor =
-  "n-i-c-v-ci-sm-ve:ver80,r-cr-o:hor20,a:blinkwait700-blinkoff25-blinkon25-Cursor/lCursor"
+  "n-i-c-v-ci-sm-ve:ver80,r-cr-o:hor20,a:blinkwait700-blinkoff250-blinkon250-Cursor/lCursor"
 vim.opt.history = 500
 vim.o.undofile = true -- сохранять undo файлы
 vim.o.undodir = vim.fn.stdpath("state") .. "/undo" -- ~/.local/state/nvim/undo/
@@ -45,6 +45,9 @@ vim.diagnostic.config({
     },
   },
 })
+
+vim.keymap.set("i", "<Tab>", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-i>", "<Tab>", { noremap = true, silent = true })
 
 -- Прозрачный фон
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

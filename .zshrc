@@ -123,16 +123,31 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias m="make"
-alias n="nvim"
-alias n.="nvim ."
 
+# ALIASES -------------------------------------------
+
+# make → m
+alias m="make"
+
+# nvim → n
+alias n="nvim ."
+alias n.="nvim"
+
+# git → g
 alias g="git"
 alias ga="git add"
 alias ga.="git add ."
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gps="git push"
+
+# misc
+alias cl="clear"
+
+# docker → d
+#
+#
+
 
 # if [[ "$TERM_PROGRAM" == "vscode" || "$ITERM_PROFILE" ]]; then
 
