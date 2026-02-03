@@ -31,7 +31,7 @@ return {
 			ensure_installed = {
 				"stylua",
 				-- "clangd",
-				-- "marksman",
+				"marksman",
 				"gopls",
 				-- "pyright", -- python
 			},
@@ -53,7 +53,7 @@ return {
 				"prettier", -- html
 				-- Linters -------------------------
 				"golangci-lint",
-				-- "luacheck",
+				"luacheck",
 				-- "cpplint",
 				-- "ruff", -- python
 				-- "vale",
