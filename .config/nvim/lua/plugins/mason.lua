@@ -1,6 +1,5 @@
 return {
-	"mason-org/mason.nvim",
-
+  "mason-org/mason.nvim",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -29,10 +28,11 @@ return {
 			auto_enable = true,
 			auto_install = true,
 			ensure_installed = {
-				"stylua",
+				"stylua", -- lua
 				-- "clangd",
-				"marksman",
-				"gopls",
+				"marksman", -- markdown
+				"gopls", -- golang
+        "ts_ls" -- java/type script
 				-- "pyright", -- python
 			},
 		})
