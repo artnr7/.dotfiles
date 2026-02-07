@@ -163,13 +163,9 @@ return {
     --
     -- vim.lsp.enable("pyright")
     --
-    -- ------------------ MARKSMAN ------------------------------
-    vim.lsp.config("marksman", {
-      filetypes = { "md" },
-    })
-    vim.lsp.enable("marksman")
 
     ------------------ LUA ------------------------------
+    --- DEPRECATED
     -- Configure and enable LSP servers
     -- lua_ls
     -- vim.lsp.config("lua_ls", {
@@ -236,37 +232,9 @@ return {
     -- })
     -- vim.lsp.enable("emmet_ls")
 
-    -- ts_ls(TypeScript / JavaScript)
-    vim.lsp.config("ts_ls", {
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-      },
-      single_file_support = true,
-      init_options = {
-        preferences = {
-          includeCompletionsForModuleExports = true,
-          includeCompletionsForImportStatements = true,
-        },
-      },
-    })
+    vim.lsp.enable("marksman")
+    vim.lsp.enable("vscode-css-language-server")
     vim.lsp.enable("ts_ls")
-
-    ------------------ GOLANG ------------------------------
-    -- gopls
-    vim.lsp.config("gopls", {
-      settings = {
-        gopls = {
-          analyses = {
-            unusedparams = true,
-          },
-          staticcheck = true,
-          gofumpt = false, -- Лучше настраивать отдельно
-        },
-      },
-    })
     vim.lsp.enable("gopls")
   end,
 }

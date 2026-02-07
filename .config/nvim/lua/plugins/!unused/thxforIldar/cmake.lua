@@ -4,11 +4,11 @@ return {
     "Civitasv/cmake-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("cmake-tools").setup {
+      require("cmake-tools").setup({
         cmake_command = "cmake",
         ctest_command = "ctest",
-        cmake_use_preset = true,            -- использовать CMake Presets, если есть
-        cmake_regenerate_on_save = true,    -- регенерировать при сохранении CMakeLists.txt
+        cmake_use_preset = true, -- использовать CMake Presets, если есть
+        cmake_regenerate_on_save = true, -- регенерировать при сохранении CMakeLists.txt
         cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" },
         cmake_build_options = {},
         cmake_build_directory = "build",
@@ -44,7 +44,7 @@ return {
         },
         cmake_virtual_text_support = true,
         cmake_use_scratch_buffer = false,
-      }
+      })
     end,
   },
 }
