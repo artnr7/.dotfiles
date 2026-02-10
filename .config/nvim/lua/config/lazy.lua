@@ -33,6 +33,7 @@ require("lazy").setup({
     {
       { import = "plugins" },
       { import = "plugins/lsp/lsp" },
+      { import = "plugins/ui" },
     },
   },
   change_detection = { enabled = false },

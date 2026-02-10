@@ -34,7 +34,6 @@ return {
         "gopls", -- golang
         "cssls", -- css
         "ts_ls", -- java/type script
-        "cssls",
         -- "pyright", -- python
       },
     })
@@ -42,7 +41,7 @@ return {
     -- Other tools
     mason_tool_installer.setup({
       ensure_installed = {
-        -- Formatters
+        -- Formatters ---------------------
         "goimports", -- go
         "gofumpt", -- go
         "golines", -- go
@@ -51,8 +50,10 @@ return {
         "clang-format", -- C/C++
         "black", -- python
         "sqlfmt", -- sql
+        ------------------------
         "prettierd", -- html
         "prettier", -- html
+
         -- Linters -------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua

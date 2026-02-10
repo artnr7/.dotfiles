@@ -9,7 +9,9 @@ return {
     require("lualine").setup({
       options = {
         icons_enabled = true,
-        theme = "github-nvim-theme",
+        -- theme = "solarized_light",
+        -- theme = "16color",
+        theme = "powerline",
         --   section_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         --   component_separators = { left = "|", right = "|" },
