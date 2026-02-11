@@ -34,6 +34,7 @@ return {
         "gopls", -- golang
         "cssls", -- css
         "ts_ls", -- java/type script
+        "html", -- html
         -- "pyright", -- python
       },
     })
@@ -53,7 +54,6 @@ return {
         ------------------------
         "prettierd", -- html
         "prettier", -- html
-
         -- Linters -------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua

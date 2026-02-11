@@ -139,7 +139,9 @@ alias ga="git add"
 alias ga.="git add ."
 alias gc="git commit"
 alias gcm="git commit -m"
-alias gps="git push"
+alias gp="git push"
+alias gpl="git pull"
+
 
 # misc
 alias cl="clear"
