@@ -28,6 +28,7 @@ return {
       auto_enable = true,
       auto_install = true,
       ensure_installed = {
+        "neocmake", -- cmake
         "stylua", -- lua
         -- "clangd",
         "marksman", -- markdown
@@ -54,6 +55,7 @@ return {
         ------------------------
         "prettierd", -- html
         "prettier", -- html
+        "nginx-config-formatter", -- nginx
         -- Linters -------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua

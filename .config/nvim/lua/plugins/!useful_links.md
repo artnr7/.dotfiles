@@ -1,3 +1,7 @@
 https://github.com/zwhitchcox/config.nix/blob/master/configs/nvim/lua/user/auto-session.lua
 https://github.com/Sin-cy/dotfiles/blob/main/nvim/.config/nvim/lua/sethy/plugins/lsp/lspconfig.lua
 https://dev.to/craftzdog/my-neovim-setup-for-react-typescript-tailwind-css-etc-58fb
+https://github.com/theHamsta/nvim-treesitter-pairs
+https://github.com/luochen1990/rainbow
+https://gitlab.com/HiPhish/rainbow-delimiters.nvim
+https://github.com/lukas-reineke/indent-blankline.nvim?tab=readme-ov-file#multiple-indent-colors

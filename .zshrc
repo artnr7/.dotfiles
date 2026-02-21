@@ -142,6 +142,9 @@ alias gcm="git commit -m"
 alias gp="git push"
 alias gpl="git pull"
 
+# docker → d
+alias d="docker"
+
 
 # misc
 alias cl="clear"
