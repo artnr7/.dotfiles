@@ -5,9 +5,10 @@ return {
   config = function()
     require("conform").setup({
       formatters_by_ft = {
-        -- c = { "clang-format" },
-        -- cpp = { "clang-format" },
-        -- bash = { "shfmt" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        cc = { "clang-format" },
+        bash = { "shfmt" },
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
         -- python = { "black" },
