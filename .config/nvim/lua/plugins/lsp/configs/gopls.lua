@@ -93,6 +93,7 @@ return {
     gopls = {
       analyses = {
         unusedparams = true,
+        printf = false,
       },
       staticcheck = true,
       gofumpt = false, -- Лучше настраивать отдельно

@@ -27,6 +27,8 @@ vim.o.undolevels = 10000 -- 10k изменений
 vim.o.undoreload = 10000 -- при перезагрузке файла
 vim.o.sessionoptions =
   "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- Отключаем tags функциональность
+vim.opt.tags = { "" } -- пустой список = нет tags
 
 vim.cmd([[
   augroup CursorColor
