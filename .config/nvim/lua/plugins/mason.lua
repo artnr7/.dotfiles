@@ -30,7 +30,7 @@ return {
       ensure_installed = {
         "neocmake", -- cmake
         "stylua", -- lua
-        -- "clangd",
+        "clangd", -- C++
         "marksman", -- markdown
         "gopls", -- golang
         "cssls", -- css
@@ -43,7 +43,8 @@ return {
     -- Other tools
     mason_tool_installer.setup({
       ensure_installed = {
-        -- Formatters ---------------------
+        --- Formatters ---------------------------------
+        --- GO -----------------
         "goimports", -- go
         "gofumpt", -- go
         "golines", -- go
@@ -52,14 +53,14 @@ return {
         "clang-format", -- C/C++
         "black", -- python
         "sqlfmt", -- sql
-        ------------------------
+        --- WEB -----------------
         "prettierd", -- html
         "prettier", -- html
         "nginx-config-formatter", -- nginx
-        -- Linters -------------------------
+        --- Linters -------------------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua
-        -- "cpplint",
+        "cpplint",
         -- "ruff", -- python
         -- "vale",
       },

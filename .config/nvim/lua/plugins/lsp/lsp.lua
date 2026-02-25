@@ -101,21 +101,6 @@ return {
       capabilities = capabilities,
     })
 
-    ------------------ CLANGD ------------------------------
-    -- vim.lsp.config("clangd", {
-    --   capabilities = {
-    --     offsetEncoding = { "utf-8", "utf-16" },
-    --     textDocument = {
-    --       completion = {
-    --         editsNearCursor = true,
-    --       },
-    --     },
-    --   },
-    --   cmd = { "clangd" },
-    --   filetypes = { "c", "cpp", "cc", "objc", "objcpp", "cuda" },
-    -- })
-    -- vim.lsp.enable("clangd")
-
     ------------------ PYRIGHT ------------------------------
     -- vim.lsp.config("pyright", {
     --   cmd = { "pyright-langserver", "--stdio" },
@@ -232,6 +217,7 @@ return {
     -- })
     -- vim.lsp.enable("emmet_ls")
 
+    vim.lsp.enable("clangd")
     vim.lsp.enable("marksman")
     vim.lsp.enable("vscode-css-language-server")
     vim.lsp.enable("ts_ls")
