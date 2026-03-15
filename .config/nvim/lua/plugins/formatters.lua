@@ -16,6 +16,7 @@ return {
         -- rust = { "rustfmt", lsp_format = "fallback" },
         -- Conform will run the first available formatter
         javascript = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofumpt", "golines", lsp_format = "fallback" },
         -- sql = { "pgformatter", lsp_format = "fallback" },
