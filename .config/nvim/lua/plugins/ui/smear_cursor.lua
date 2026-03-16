@@ -18,7 +18,7 @@ return {
     -- Smear cursor in insert mode.
     -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
     smear_insert_mode = false,
-    time_interval = 1,
+    time_interval = 20,
     -- Faster
     stiffness = 1,                        -- 0.6      [0, 1]
     trailing_stiffness = 0.75,             -- 0.45     [0, 1]
@@ -27,5 +27,7 @@ return {
     damping = 0.95,                       -- 0.85     [0, 1]
     damping_insert_mode = 0.95,           -- 0.9      [0, 1]
     distance_stop_animating = 0.01,        -- 0.1      > 0
+    -- cursor_color = "#d3cdc3",
+    cursor_color = "#CB4154",
   },
 }

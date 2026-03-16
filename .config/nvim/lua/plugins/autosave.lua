@@ -1,63 +1,45 @@
--- return {
---   "Pocco81/auto-save.nvim",
---   config = function()
---     require("auto-save").setup({
---       enabled = true,
---       execution_message = {
---         message = function() -- сообщение при сохранении
---           return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
---         end,
---         dim = 0.18,
---         cleaning_interval = 1250,
---       },
---       trigger_events = { -- когда сохранять
---         immediate_save = { "TextChanged" }, -- при любом изменении текста
---         defer_save = { "FocusLost", "BufLeave" }, -- при потере фокуса
---         cancel_defered_save = { "InsertLeave" }, -- отмена отложенного сохранения
---       },
---       write_all_buffers = false, -- сохранять все буферы или только текущий
---       on_off_commands = true, -- команды :ASToggle и т.д.
---       clean_command_line_interval = 1000,
---       debounce_delay = 135, -- задержка после прекращения печати (мс)
---     })
---   end,
--- }
-return {
-  "pocco81/auto-save.nvim",
+          return {
+  "nullishamy/autosave.nvim",
   config = function()
-    require("auto-save").setup({
-      enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
-      execution_message = {
-        message = function() -- message to print on save
-          return ("AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"))
-        end,
-        dim = 0.18, -- dim the color of `message`
-        cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+    local filters = require("autosave.filters")
+    -- Available filters:
+    -- filters.git_repo
+    -- filters.invert
+    -- filters.opt
+    -- filters.not_empty
+    -- filters.modifiable
+    -- filters.writeable
+    -- filters.modified
+    -- filters.filetype
+    -- filters.custom
+    -- Each filter has luadoc to describe its functionality and usage.
+    require("autosave").setup({
+      plugin = {
+        force = false, -- Whether to forcefully write or not (:w!)
       },
-      trigger_events = { "InsertLeave", "TextChanged" }, -- vim events that trigger auto-save. See :h events
-      -- function that determines whether to save the current buffer or not
-      -- return true: if buffer is ok to be saved
-      -- return false: if it's not ok to be saved
-      condition = function(buf)
-        local fn = vim.fn
-        local utils = require("auto-save.utils.data")
-
-        if
-          fn.getbufvar(buf, "&modifiable") == 1
-          and utils.not_in(fn.getbufvar(buf, "&filetype"), {})
-        then
-          return true -- met condition(s), can save
-        end
-        return false -- can't save
-      end,
-      write_all_buffers = false, -- write all buffers when the current one meets `condition`
-      debounce_delay = 5000, -- saves the file at most every `debounce_delay` milliseconds
-      callbacks = { -- functions to be executed at different intervals
-        enabling = nil, -- ran when enabling auto-save
-        disabling = nil, -- ran when disabling auto-save
-        before_asserting_save = nil, -- ran before checking `condition`
-        before_saving = nil, -- ran before doing the actual save
-        after_saving = nil, -- ran after doing the actual save
+      events = {
+        register = true, -- Should autosave register its autocommands
+        triggers = { -- The autocommands to register, if enabled
+          "InsertLeave",
+          "TextChanged",
+        },
+      },
+      debounce = {
+        enabled = true, -- Should debouncing be enabled
+        delay = 250, -- If enabled, only save the file at most every `delay` ms
+      },
+      filters = { -- The filters to apply, see above for all options.
+        -- These filters are required for basic operation as they prevent
+        -- errors related to to buffer state.
+        filters.writeable,
+        filters.not_empty,
+        filters.modified,
+      },
+      hooks = {
+        on_enable = nil, -- Called when the plugin is enabled for the first time.
+        pre_filter = nil, -- Called before the write sequence begins. (This happens before filter checks)
+        pre_write = nil, -- Called before the buffer is written (This happens after all checks pass)
+        post_write = nil, -- Called after the write sequence. (This happens after the buffer has been saved)
       },
     })
   end,

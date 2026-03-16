@@ -1,0 +1,8 @@
+-- Нормальный автосейв без лагов, как тот что закомментирован
+-- Я так и не смог тот нормально настроить
+-- В итоге тоже говно
+return {
+  "brianhuster/autosave.nvim",
+  event = "InsertEnter",
+  opts = {}, -- Configuration here
+}

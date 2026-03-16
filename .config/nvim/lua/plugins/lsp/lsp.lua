@@ -101,6 +101,13 @@ return {
       capabilities = capabilities,
     })
 
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("marksman")
+    vim.lsp.enable("vscode-css-language-server")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("gopls")
+    vim.lsp.enable("vscode-css-language-server")
+
     ------------------ PYRIGHT ------------------------------
     -- vim.lsp.config("pyright", {
     --   cmd = { "pyright-langserver", "--stdio" },
@@ -216,23 +223,5 @@ return {
     --   },
     -- })
     -- vim.lsp.enable("emmet_ls")
-
-    vim.lsp.enable("clangd")
-    vim.lsp.enable("marksman")
-    vim.lsp.enable("vscode-css-language-server")
-    vim.lsp.enable("ts_ls")
-    vim.lsp.enable("gopls")
-
-    vim.lsp.config("vscode-css-language-server", {
-      filetypes = { "css", "scss", "less" },
-      init_options = { provideFormatter = true }, -- needed to enable formatting capabilities
-      root_markers = { "package.json", ".git" },
-      settings = {
-        css = { validate = true },
-        scss = { validate = true },
-        less = { validate = true },
-      },
-    })
-    vim.lsp.enable("vscode-css-language-server")
   end,
 }
