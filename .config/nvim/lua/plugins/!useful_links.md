@@ -5,3 +5,6 @@ https://github.com/theHamsta/nvim-treesitter-pairs
 https://github.com/luochen1990/rainbow
 https://gitlab.com/HiPhish/rainbow-delimiters.nvim
 https://github.com/lukas-reineke/indent-blankline.nvim?tab=readme-ov-file#multiple-indent-colors
+https://github.com/josstei/whisk.nvim
+https://github.com/kotaindah55/animated-cursor
+https://github.com/Code-Parth/smooth-cursor
