@@ -23,7 +23,7 @@ return {
         -- sql = { "sqlfmt" },
       },
       formatters = {
-        stylua = {
+        stylua = { 
           prepend_args = {
             "--column-width",
             "100",
