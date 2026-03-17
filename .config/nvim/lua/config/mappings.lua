@@ -14,7 +14,7 @@ vim.keymap.set(
 
 -- Main
 -- Hotkets like in IDE's
-keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = false, desc = "Save us!" })
+-- keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = false, desc = "Save us!" })
 
 keymap("n", "<C-w>", function()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -26,6 +26,16 @@ keymap("n", "<C-w>", function()
     else
       vim.cmd("wq")
     end
+  else
+    vim.cmd("q")
+  end
+end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
+
+keymap("n", "<Esc>", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
   else
     vim.cmd("q")
   end
