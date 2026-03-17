@@ -107,6 +107,7 @@ return {
     vim.lsp.enable("ts_ls")
     vim.lsp.enable("gopls")
     vim.lsp.enable("vscode-css-language-server")
+    vim.lsp.enable("lua_ls")
 
     ------------------ PYRIGHT ------------------------------
     -- vim.lsp.config("pyright", {

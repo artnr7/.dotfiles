@@ -14,14 +14,24 @@ vim.keymap.set(
 
 -- Main
 -- Hotkets like in IDE's
-keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save us!" })
-keymap(
-  "n",
-  "<C-w>",
-  ":q<CR>",
-  { noremap = true, silent = true, nowait = true, desc = "Close the window" }
-)
-keymap("v", "<C-c>", "y", { noremap = true, silent = true, desc = "Save us!" })
+keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = false, desc = "Save us!" })
+
+keymap("n", "<C-w>", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
+    if bufname == "" then
+      vim.cmd("q")
+    else
+      vim.cmd("wq")
+    end
+  else
+    vim.cmd("q")
+  end
+end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
+
+keymap("v", "<C-c>", "y", { noremap = true, desc = "Save us!" })
 
 -- Alt + стрелки (как в IDE)
 -- map("i", "<A-j>", "<C-o>j:startinsert<CR>", { desc = "Down" })
@@ -37,8 +47,7 @@ keymap("v", "<C-c>", "y", { noremap = true, silent = true, desc = "Save us!" })
 map("i", "<C-G>", "<C-o>G", { desc = "End of file" })
 map("i", "<C-Home>", "<C-o>gg", { desc = "Start of file" })
 
--- File tree
-map("<C-t>", "<cmd>Neotree toggle<CR>", "Toggle file tree")
+-- map("<C-t>", "<cmd>Neotree toggle<CR>", "Toggle file tree")
 map("<C-h>", "<C-w>h", "Change to the left win")
 map("<C-l>", "<C-w>l", "Change to the right win")
 map("<C-j>", "<C-w>j", "Change to the down win")

@@ -48,6 +48,13 @@ vim.diagnostic.config({
   },
 })
 
+-- Настройка дерева файлов, которое выводится если не использовать никакой explorer плагин
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_listsstyle = 3
+-- vim.g.browse_split = 3
+--
+-- vim.g.prettier = 1
+
 vim.keymap.set("i", "<Tab>", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-i>", "<Tab>", { noremap = true, silent = true })
 

@@ -1,4 +1,4 @@
-          return {
+return {
   "nullishamy/autosave.nvim",
   config = function()
     local filters = require("autosave.filters")
@@ -22,11 +22,13 @@
         triggers = { -- The autocommands to register, if enabled
           "InsertLeave",
           "TextChanged",
+          -- "BufLeave",
+          -- "QuitPre",
         },
       },
       debounce = {
         enabled = true, -- Should debouncing be enabled
-        delay = 250, -- If enabled, only save the file at most every `delay` ms
+        delay = 25000, -- If enabled, only save the file at most every `delay` ms
       },
       filters = { -- The filters to apply, see above for all options.
         -- These filters are required for basic operation as they prevent

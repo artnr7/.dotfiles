@@ -36,6 +36,7 @@ return {
         "cssls", -- css
         "ts_ls", -- java/type script
         "html", -- html
+        "lua_ls" -- lua
         -- "pyright", -- python
       },
     })
