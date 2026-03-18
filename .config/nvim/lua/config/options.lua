@@ -29,17 +29,19 @@ vim.o.sessionoptions =
   "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- Отключаем tags функциональность
 vim.opt.tags = { "" } -- пустой список = нет tags
-vim.g.neovide_progress_bar_animation_speed = 1000.0 -- Чем выше, тем быстрее (по умолчанию ~200)
-vim.g.neovide_progress_bar_hide_delay = 0.1 -- Быстрее скрытие
+-- vim.o.showcmd = true
 
-vim.g.neovide_cursor_animation_length = 0.005 -- Максимально быстро (сек)
-vim.g.neovide_cursor_trail_length = 0.1 -- Короткий след
-vim.g.neovide_cursor_antialiasing_vfx_mode = true -- Плавность
--- vim.g.neovide_cursor_vfx_mode = false -- Отключить эффекты
-vim.g.neovide_input_macos_alt_is_meta = true -- Mac: меньше задержка
-vim.opt.timeoutlen = 200 -- Быстрее keymap (мс)
-vim.opt.ttimeoutlen = 0 -- Ноль задержки клавиш
-vim.opt.updatetime = 50 -- Быстрый update
+-- vim.g.neovide_progress_bar_animation_speed = 1000.0 -- Чем выше, тем быстрее (по умолчанию ~200)
+-- vim.g.neovide_progress_bar_hide_delay = 0.1 -- Быстрее скрытие
+--
+-- vim.g.neovide_cursor_animation_length = 0.005 -- Максимально быстро (сек)
+-- vim.g.neovide_cursor_trail_length = 0.1 -- Короткий след
+-- vim.g.neovide_cursor_antialiasing_vfx_mode = true -- Плавность
+-- -- vim.g.neovide_cursor_vfx_mode = false -- Отключить эффекты
+-- vim.g.neovide_input_macos_alt_is_meta = true -- Mac: меньше задержка
+-- vim.opt.timeoutlen = 200 -- Быстрее keymap (мс)
+-- vim.opt.ttimeoutlen = 0 -- Ноль задержки клавиш
+-- vim.opt.updatetime = 50 -- Быстрый update
 
 vim.cmd([[
   augroup CursorColor

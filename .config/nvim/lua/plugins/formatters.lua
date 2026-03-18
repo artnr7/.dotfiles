@@ -23,7 +23,7 @@ return {
         -- sql = { "sqlfmt" },
       },
       formatters = {
-        stylua = { 
+        stylua = {
           prepend_args = {
             "--column-width",
             "100",
@@ -63,9 +63,11 @@ return {
     --     require("conform").format({ bufnr = args.buf })
     --   end,
     -- })
-    vim.keymap.set("n", "<C-s>", function()
-      require("conform").format({ lsp_format = "fallback" })
-    end, { desc = "Format on manual save" })
+
+    -- vim.keymap.set("n", "<C-s>", function()
+    --   require("conform").format({ lsp_format = "fallback" })
+    -- end, { noremap = false, silent = false, desc = "Format on manual save" })
+
     -- require("conform").setup({
     --   format_on_save = {
     --     -- These options will be passed to conform.format()

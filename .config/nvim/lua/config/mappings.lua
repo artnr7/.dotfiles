@@ -14,7 +14,13 @@ vim.keymap.set(
 
 -- Main
 -- Hotkets like in IDE's
--- keymap("n", "<C-s>", ":w<CR>", { noremap = true, silent = false, desc = "Save us!" })
+keymap("n", "<C-s>", function()
+  require("conform").format({ lsp_format = "fallback", async = false })
+  vim.cmd("w") -- сохраняем
+  -- vim.cmd("echo 'Файл сохранён!'")
+  vim.notify("💾 Файл сохранён!", vim.log.levels.INFO, { title = "Save" })
+  -- vim.api.nvim_echo({ { "💾 Файл сохранён!", "None" } }, false, {})
+end, { noremap = false, silent = false, desc = "Save us!" })
 
 keymap("n", "<C-w>", function()
   local bufnr = vim.api.nvim_get_current_buf()
