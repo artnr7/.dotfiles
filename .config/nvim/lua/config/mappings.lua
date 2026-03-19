@@ -1,28 +1,19 @@
-local keymap = vim.keymap.set
+local m = require("..ut.map")
 
-local map = function(keys, func, desc, mode)
-  mode = mode or "n"
-  vim.keymap.set(mode, keys, func, { desc = "Default: " .. desc })
-end
+m.mapN("<leader>e", vim.diagnostic.open_float, { desc = "Открыть диагностику" })
 
-vim.keymap.set(
-  "n",
-  "<leader>e",
-  vim.diagnostic.open_float,
-  { desc = "Открыть диагностику" }
-)
-
--- Main
 -- Hotkets like in IDE's
-keymap("n", "<C-s>", function()
+m.m("v", "<C-c>", "y", { noremap = true, desc = "Save us!" })
+
+m.mapN("<C-s>", function()
   require("conform").format({ lsp_format = "fallback", async = false })
   vim.cmd("w") -- сохраняем
   -- vim.cmd("echo 'Файл сохранён!'")
-  vim.notify("💾 Файл сохранён!", vim.log.levels.INFO, { title = "Save" })
+  vim.notify("💾 Saved", vim.log.levels.INFO, { title = "Save" })
   -- vim.api.nvim_echo({ { "💾 Файл сохранён!", "None" } }, false, {})
-end, { noremap = false, silent = false, desc = "Save us!" })
+end, { noremap = false, silent = false, nowait = true, desc = "Save us!" })
 
-keymap("n", "<C-w>", function()
+m.mapN("<C-w>", function()
   local bufnr = vim.api.nvim_get_current_buf()
   local bufname = vim.api.nvim_buf_get_name(bufnr)
 
@@ -37,7 +28,7 @@ keymap("n", "<C-w>", function()
   end
 end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
 
-keymap("n", "<Esc>", function()
+m.mapN("<Esc>", function()
   local bufnr = vim.api.nvim_get_current_buf()
   local bufname = vim.api.nvim_buf_get_name(bufnr)
 
@@ -47,82 +38,57 @@ keymap("n", "<Esc>", function()
   end
 end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
 
-keymap("v", "<C-c>", "y", { noremap = true, desc = "Save us!" })
-
--- Alt + стрелки (как в IDE)
--- map("i", "<A-j>", "<C-o>j:startinsert<CR>", { desc = "Down" })
--- map("i", "<A-k>", "<C-o>k", { desc = "Up" })
--- map("i", "<A-h>", "<C-o>h", { desc = "Left" })
--- map("i", "<A-l>", "<C-o>l", { desc = "Right" })
+-- vim.keymap.set("i", "<A-j>", "<C-o>j<C-o>:m .+1<CR>", { noremap = true, silent = true }) -- перемещение
 
 -- -- Ctrl + стрелки (по словам)
 -- map("i", "<C-j>", "<C-o>gj", { desc = "Next line" })
 -- map("i", "<C-k>", "<C-o>gk", { desc = "Prev line" })
 
--- Быстрый конец/начало файла
-map("i", "<C-G>", "<C-o>G", { desc = "End of file" })
-map("i", "<C-Home>", "<C-o>gg", { desc = "Start of file" })
+m.mapN("<C-A-h>", "<C-w>H", { desc = "Change to the left win" })
+m.mapN("<C-A-l>", "<C-w>L", { desc = "Change to the right win" })
+m.mapN("<C-A-j>", "<C-w>J", { desc = "Change to the down win" })
+m.mapN("<C-A-k>", "<C-w>K", { desc = "Change to the upper win" })
 
--- map("<C-t>", "<cmd>Neotree toggle<CR>", "Toggle file tree")
-map("<C-h>", "<C-w>h", "Change to the left win")
-map("<C-l>", "<C-w>l", "Change to the right win")
-map("<C-j>", "<C-w>j", "Change to the down win")
-map("<C-k>", "<C-w>k", "Change to the upper win")
+m.mapN("<C-h>", "<C-w>h", { desc = "Change to the left win" })
+m.mapN("<C-l>", "<C-w>l", { desc = "Change to the right win" })
+m.mapN("<C-j>", "<C-w>j", { desc = "Change to the down win" })
+m.mapN("<C-k>", "<C-w>k", { desc = "Change to the upper win" })
+
+-- Alt + стрелки (как в IDE)
+m.mapI("<A-j>", "<C-o>j", { desc = "Down" })
+m.mapI("<A-h>", "<C-o>h", { desc = "Left" })
+m.mapI("<A-k>", "<C-o>k", { desc = "Up" })
+m.mapI("<A-l>", "<C-o>l", { desc = "Right" })
 
 -- Telescope
-map("<leader>ff", "<cmd>Telescope find_files<CR>", "Find files")
-map("<leader>fg", "<cmd>Telescope live_grep<CR>", "Live grep")
-map("<leader>fb", "<cmd>Telescope buffers<CR>", "Find buffers")
-
--- cmake-tools
-keymap("n", "<leader>cg", function()
-  vim.cmd("CMakeGenerate")
-end, { desc = "CMake Generate" })
-
-keymap("n", "<leader>cb", function()
-  vim.cmd("CMakeBuild")
-end, { desc = "CMake Build" })
-
-keymap("n", "<leader>cc", function()
-  vim.cmd("CMakeClean")
-end, { desc = "CMake Clean" })
-
-keymap("n", "<leader>cd", function()
-  vim.cmd("CMakeDebug")
-end, { desc = "CMake Debug" })
-
-keymap("n", "<leader>cr", function()
-  vim.cmd("CMakeRun")
-end, { desc = "CMake Run" })
-
-keymap("n", "<leader>cs", function()
-  vim.cmd("CMakeStop")
-end, { desc = "CMake Stop" })
+-- map("<leader>ff", "<cmd>Telescope find_files<CR>", "Find files")
+-- map("<leader>fg", "<cmd>Telescope live_grep<CR>", "Live grep")
+-- map("<leader>fb", "<cmd>Telescope buffers<CR>", "Find buffers")
 
 --Persistance
 -- load the session for the current directory
-vim.keymap.set("n", "<leader>qs", function()
-  require("persistence").load()
-end)
+-- m.mapN("<leader>qs", function()
+--   require("persistence").load()
+-- end)
 
 -- select a session to load
-vim.keymap.set("n", "<leader>qS", function()
-  require("persistence").select()
-end)
+-- m.mapN("<leader>qS", function()
+--   require("persistence").select()
+-- end)
 
 -- load the last session
-vim.keymap.set("n", "<leader>ql", function()
-  require("persistence").load({ last = true })
-end)
+-- m.mapN("<leader>ql", function()
+--   require("persistence").load({ last = true })
+-- end)
 
 -- stop Persistence => session won't be saved on exit
-vim.keymap.set("n", "<leader>qd", function()
-  require("persistence").stop()
-end)
+-- m.mapN("<leader>qd", function()
+--   require("persistence").stop()
+-- end)
 
 -- Markdown
-vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
-vim.keymap.set("v", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
+-- vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
+-- vim.keymap.set("v", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown Preview" })
 
 -- LSP
 --keymap("n", "K", vim.lsp.buf.hover, { desc = "Show documentation" })
@@ -133,8 +99,8 @@ vim.keymap.set("v", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Ma
 --keymap("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "Toggle breakpoint" })
 
 -- Плавающий терминал
-map("<leader>t", "<cmd>FloatermToggle<CR>", "Toggle floating terminal")
-map("<Esc>", "<C-\\><C-n>", "Exit terminal mode", "t")
+m.mapN("<leader>t", "<cmd>FloatermToggle<CR>", { desc = "Toggle floating terminal" })
+m.m("t","<Esc>", "<C-\\><C-n>", {desc = "Exit terminal mode"})
 
 -- Управление вкладками
 --keymap("n", "<leader>tc", "<cmd>BufferLinePickClose<CR>", { desc = "Close tab" })

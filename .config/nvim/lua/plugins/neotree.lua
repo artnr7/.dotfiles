@@ -1,4 +1,4 @@
-local m = require("..ut.z_utils_map")
+local m = require("..ut.map")
 
 return {
   "nvim-neo-tree/neo-tree.nvim",
@@ -11,12 +11,12 @@ return {
   },
   config = function()
     require("neo-tree").setup({
-      m.mapN("<leader>w", "<cmd>Neotree toggle float<CR>", "Neotree float"),
+      m.mapN("<leader>w", "<cmd>Neotree toggle float<CR>", {desc = "Neotree float"}),
       m.mapN("<C-t>", function()
         -- vim.cmd("NoNeckPain")
         -- vim.uv.sleep(50) -- Ждём 50мс
         vim.cmd("Neotree toggle left")
-      end, "Neotree left"),
+      end, {desc = "Neotree left"}),
       -- vim.keymap.set("n", "<C-t>", "<cmd>NoNeckPain | Neotree toggle left<CR>", {
       --   noremap = true,
       --   silent = true,
@@ -26,7 +26,7 @@ return {
       auto_clean_after_session_restore = false,
       -- close_if_last_window = true, -- Закрыть neo-tree, если это последнее окно
       window = {
-        width = 40, -- Процент от ширины экрана
+        width = 35, -- Процент от ширины экрана
         position = "float", -- left/right/float/current
         height = 0.99,
         -- mappings = {

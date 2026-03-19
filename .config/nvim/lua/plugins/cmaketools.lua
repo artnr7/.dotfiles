@@ -1,3 +1,5 @@
+local m = require("..ut.map")
+
 return {
   "Civitasv/cmake-tools.nvim",
   dependencies = {
@@ -11,6 +13,29 @@ return {
     },
   },
   config = function()
+    m.mapN("<leader>cg", function()
+      vim.cmd("CMakeGenerate")
+    end, { desc = "CMake Generate" })
+
+    m.m("n", "<leader>cb", function()
+      vim.cmd("CMakeBuild")
+    end, { desc = "CMake Build" })
+
+    m.m("n", "<leader>cc", function()
+      vim.cmd("CMakeClean")
+    end, { desc = "CMake Clean" })
+
+    m.m("n", "<leader>cd", function()
+      vim.cmd("CMakeDebug")
+    end, { desc = "CMake Debug" })
+
+    m.m("n", "<leader>cr", function()
+      vim.cmd("CMakeRun")
+    end, { desc = "CMake Run" })
+
+    m.m("n", "<leader>cs", function()
+      vim.cmd("CMakeStop")
+    end, { desc = "CMake Stop" })
     local osys = require("cmake-tools.osys")
     require("cmake-tools").setup({
       cmake_command = "cmake", -- this is used to specify cmake command path
