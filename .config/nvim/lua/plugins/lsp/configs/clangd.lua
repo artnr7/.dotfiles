@@ -17,7 +17,9 @@ local function switch_source_header(bufnr, client)
   ---@diagnostic disable-next-line:param-type-mismatch
   if not client or not client:supports_method(method_name) then
     return vim.notify(
-      ("method %s is not supported by any servers active on the current buffer"):format(method_name)
+      ("method %s is not supported by any servers active on the current buffer"):format(
+        method_name
+      )
     )
   end
   local params = vim.lsp.util.make_text_document_params(bufnr)
@@ -65,7 +67,12 @@ end
 
 ---@type vim.lsp.Config
 return {
-  cmd = { "clangd" },
+  cmd = {
+    "clangd",
+    "--clang-tidy",
+    "--header-insertion=iwyu", -- Include What You Use
+    "--enable-config", -- .clangd файл},
+  },
   filetypes = { "c", "cc", "cpp", "objc", "objcpp", "cuda" },
   root_markers = {
     ".clangd",
@@ -81,6 +88,16 @@ return {
       completion = {
         editsNearCursor = true,
       },
+      codeAction = {
+        dynamicRegistration = true,
+        codeActionLiteralSupport = {
+          codeActionKinds = {
+            "quickfix",
+            "refactor.extract", -- Извлечение
+            "source.removeUnusedIncludes", -- ✅ УДАЛЕНИЕ unused!
+          },
+        },
+      },
     },
     offsetEncoding = { "utf-8", "utf-16" },
   },
@@ -91,12 +108,25 @@ return {
     end
   end,
   on_attach = function(client, bufnr)
-    vim.api.nvim_buf_create_user_command(bufnr, "LspClangdSwitchSourceHeader", function()
-      switch_source_header(bufnr, client)
-    end, { desc = "Switch between source/header" })
+    -- Отключаем форматирование clangd (используем conform.nvim)
+    -- client.server_capabilities.documentFormattingProvider = false
+    -- client.server_capabilities.documentRangeFormattingProvider = false
+    vim.api.nvim_buf_create_user_command(
+      bufnr,
+      "LspClangdSwitchSourceHeader",
+      function()
+        switch_source_header(bufnr, client)
+      end,
+      { desc = "Switch between source/header" }
+    )
 
-    vim.api.nvim_buf_create_user_command(bufnr, "LspClangdShowSymbolInfo", function()
-      symbol_info(bufnr, client)
-    end, { desc = "Show symbol info" })
+    vim.api.nvim_buf_create_user_command(
+      bufnr,
+      "LspClangdShowSymbolInfo",
+      function()
+        symbol_info(bufnr, client)
+      end,
+      { desc = "Show symbol info" }
+    )
   end,
 }

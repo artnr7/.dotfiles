@@ -1,13 +1,16 @@
--- DONE
+-- :ConformInfo
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("conform").setup({
       formatters_by_ft = {
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-        cc = { "clang-format" },
+        c = { "clang_format", lsp_format = "fallback" },
+        cpp = { "clang_format", lsp_format = "fallback" },
+        cc = { "clang_format", lsp_format = "fallback" },
+        h = { "clang_format", lsp_format = "fallback" },
+        cmake = { "cmake_format" },
+        make = { "cmake-format", "mbake", "checkmake", stop_after_first = true },
         bash = { "shfmt" },
         lua = { "stylua" },
         -- Conform will run multiple formatters sequentially
@@ -26,7 +29,7 @@ return {
         stylua = {
           prepend_args = {
             "--column-width",
-            "100",
+            "80",
             "--indent-type",
             "Spaces",
             "--indent-width",
@@ -45,6 +48,17 @@ return {
             -- "-t",
             -- "2",
           },
+        },
+        clang_format = {
+          prepend_args = { "--style=file", "--fallback-style=Google" }, -- "--style=file"
+          stdin = true, -- Обязательно для комментариев!
+          -- prepend_args = function(self, ctx)
+          --   return { "--style=file:" .. vim.fs.dirname(ctx.dirname) .. "/.clang-format" }
+          -- end,
+        },
+
+        shfmt = {
+          prepend_args = { "-i", "4" },
         },
         -- pgformatter = {
         --   prepend_args = {
