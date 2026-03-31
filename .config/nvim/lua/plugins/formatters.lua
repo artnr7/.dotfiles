@@ -19,6 +19,7 @@ return {
         json = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofumpt", "golines", lsp_format = "fallback" },
+        nginx = { "nginxfmt" },
         -- sql = { "pgformatter", lsp_format = "fallback" },
         -- sql = { "sqlfmt" },
       },
