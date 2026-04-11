@@ -10,6 +10,7 @@ return {
         cc = { "clang-format" },
         bash = { "shfmt" },
         lua = { "stylua" },
+        make = { "mbake" },
         -- Conform will run multiple formatters sequentially
         -- python = { "black" },
         -- You can customize some of the format options for the filetype (:help conform.format)
