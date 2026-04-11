@@ -1,6 +1,10 @@
 local m = require("..ut.map")
 
-m.mapN("<leader>e", vim.diagnostic.open_float, { desc = "Открыть диагностику" })
+m.mapN(
+  "<leader>e",
+  vim.diagnostic.open_float,
+  { desc = "Открыть диагностику" }
+)
 
 -- Hotkets like in IDE's
 m.m("v", "<C-c>", "y", { noremap = true, desc = "Save us!" })
@@ -13,30 +17,34 @@ m.mapN("<C-s>", function()
   -- vim.api.nvim_echo({ { "💾 Файл сохранён!", "None" } }, false, {})
 end, { noremap = false, silent = false, nowait = true, desc = "Save us!" })
 
-m.mapN("<C-w>", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local bufname = vim.api.nvim_buf_get_name(bufnr)
+m.mapN(
+  "<C-w>",
+  function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
 
-  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
-    if bufname == "" then
-      vim.cmd("q")
+    if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
+      if bufname == "" then
+        vim.cmd("q")
+      else
+        vim.cmd("wq")
+      end
     else
-      vim.cmd("wq")
+      vim.cmd("q")
     end
-  else
-    vim.cmd("q")
-  end
-end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
+  end,
+  { noremap = true, silent = true, nowait = true, desc = "Close the window" }
+)
 
-m.mapN("<Esc>", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local bufname = vim.api.nvim_buf_get_name(bufnr)
-
-  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
-  else
-    vim.cmd("q")
-  end
-end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
+-- m.mapN("<Esc>", function()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local bufname = vim.api.nvim_buf_get_name(bufnr)
+--
+--   if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "" then
+--   else
+--     vim.cmd("q")
+--   end
+-- end, { noremap = true, silent = true, nowait = true, desc = "Close the window" })
 
 -- vim.keymap.set("i", "<A-j>", "<C-o>j<C-o>:m .+1<CR>", { noremap = true, silent = true }) -- перемещение
 
@@ -99,8 +107,12 @@ m.mapI("<A-l>", "<C-o>l", { desc = "Right" })
 --keymap("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "Toggle breakpoint" })
 
 -- Плавающий терминал
-m.mapN("<leader>t", "<cmd>FloatermToggle<CR>", { desc = "Toggle floating terminal" })
-m.m("t","<Esc>", "<C-\\><C-n>", {desc = "Exit terminal mode"})
+m.mapN(
+  "<leader>t",
+  "<cmd>FloatermToggle<CR>",
+  { desc = "Toggle floating terminal" }
+)
+m.m("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Управление вкладками
 --keymap("n", "<leader>tc", "<cmd>BufferLinePickClose<CR>", { desc = "Close tab" })

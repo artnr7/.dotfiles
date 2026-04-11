@@ -12,14 +12,15 @@ return {
   },
   config = function()
     require("lint").linters_by_ft = {
-      cpp = { "cpplint" },
-      hpp = { "cpplint" },
-      cc = { "cpplint" },
-      h = { "cpplint" },
+      -- cpp = { "cpplint" },
+      -- hpp = { "cpplint" },
+      -- cc = { "cpplint" },
+      -- h = { "cpplint" },
       -- markdown = { "vale" },
       lua = { "luacheck" },
       -- go = { "golangci-lint" },
       py = { "ruff" },
+      make = { "checkmake" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

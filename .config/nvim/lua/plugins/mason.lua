@@ -36,7 +36,7 @@ return {
         "cssls", -- css
         "ts_ls", -- java/type script
         "html", -- html
-        "lua_ls" -- lua
+        "lua_ls", -- lua
         -- "pyright", -- python
       },
     })
@@ -54,6 +54,8 @@ return {
         "clang-format", -- C/C++
         "black", -- python
         "sqlfmt", -- sql
+        "cmakelang", -- cmake
+        "mbake", -- make
         --- WEB -----------------
         "prettierd", -- html
         "prettier", -- html
@@ -61,7 +63,7 @@ return {
         --- Linters -------------------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua
-        "cpplint",
+        -- "cpplint", -- C/C++
         -- "ruff", -- python
         -- "vale",
       },
