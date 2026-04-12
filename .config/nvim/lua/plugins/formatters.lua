@@ -13,7 +13,6 @@ return {
         make = { "cmake-format", "mbake", "checkmake", stop_after_first = true },
         bash = { "shfmt" },
         lua = { "stylua" },
-        make = { "mbake" },
         -- Conform will run multiple formatters sequentially
         -- python = { "black" },
         -- You can customize some of the format options for the filetype (:help conform.format)
@@ -22,6 +21,7 @@ return {
         javascript = { "prettierd", "prettier", stop_after_first = true },
         json = { "prettierd", "prettier", stop_after_first = true },
         html = { "prettierd", "prettier", stop_after_first = true },
+        markdown = { "prettierd", "prettier", stop_after_first = true },
         go = { "goimports", "gofumpt", "golines", lsp_format = "fallback" },
         nginx = { "nginxfmt" },
         -- sql = { "pgformatter", lsp_format = "fallback" },

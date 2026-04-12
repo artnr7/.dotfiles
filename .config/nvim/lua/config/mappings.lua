@@ -7,8 +7,10 @@ m.mapN(
 )
 
 -- Hotkets like in IDE's
+-- Copy
 m.m("v", "<C-c>", "y", { noremap = true, desc = "Save us!" })
 
+-- Save
 m.mapN("<C-s>", function()
   require("conform").format({ lsp_format = "fallback", async = false })
   vim.cmd("w") -- сохраняем
@@ -17,6 +19,7 @@ m.mapN("<C-s>", function()
   -- vim.api.nvim_echo({ { "💾 Файл сохранён!", "None" } }, false, {})
 end, { noremap = false, silent = false, nowait = true, desc = "Save us!" })
 
+-- Close tabs
 m.mapN(
   "<C-w>",
   function()
@@ -68,6 +71,14 @@ m.mapI("<A-h>", "<C-o>h", { desc = "Left" })
 m.mapI("<A-k>", "<C-o>k", { desc = "Up" })
 m.mapI("<A-l>", "<C-o>l", { desc = "Right" })
 
+-- Плавающий терминал
+m.mapN(
+  "<leader>t",
+  "<cmd>FloatermToggle<CR>",
+  { desc = "Toggle floating terminal" }
+)
+m.m("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- Telescope
 -- map("<leader>ff", "<cmd>Telescope find_files<CR>", "Find files")
 -- map("<leader>fg", "<cmd>Telescope live_grep<CR>", "Live grep")
@@ -105,14 +116,6 @@ m.mapI("<A-l>", "<C-o>l", { desc = "Right" })
 -- DAP
 --keymap("n", "<F5>", "<cmd>lua require('dap').continue()<CR>", { desc = "Debug continue" })
 --keymap("n", "<F9>", "<cmd>lua require('dap').toggle_breakpoint()<CR>", { desc = "Toggle breakpoint" })
-
--- Плавающий терминал
-m.mapN(
-  "<leader>t",
-  "<cmd>FloatermToggle<CR>",
-  { desc = "Toggle floating terminal" }
-)
-m.m("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Управление вкладками
 --keymap("n", "<leader>tc", "<cmd>BufferLinePickClose<CR>", { desc = "Close tab" })
