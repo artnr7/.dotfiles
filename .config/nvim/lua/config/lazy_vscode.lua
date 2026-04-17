@@ -37,10 +37,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = { -- import your plugins
     {
-      { import = "plugins" },
-      { import = "plugins/lsp" },
-      { import = "plugins/ui" },
-      { import = "plugins/ui/themes" },
+      { import = "plugins_vscode" },
     },
   },
   change_detection = { enabled = false },

@@ -11,7 +11,11 @@ https://github.com/Code-Parth/smooth-cursor
 https://github.com/folke/zen-mode.nvim?tab=readme-ov-file
 https://zellij.dev/
 https://github.com/otavioschwanck/arrow.nvim
+<<<<<<< HEAD
 https://github.com/3rd/image.nvim
 https://github.com/epwalsh/obsidian.nvim
 
 https://cypherpunksamurai.github.io/vsix-downloader-webui/
+=======
+https://github.com/caenrique/swap-buffers.nvim
+>>>>>>> 28a5e5cbea65aa55a2f1e6012fb58b7350fabcb2
