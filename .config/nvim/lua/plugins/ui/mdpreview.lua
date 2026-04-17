@@ -16,6 +16,8 @@
 --   -- Completion for `blink.cmp`
 --   -- dependencies = { "saghen/blink.cmp" },
 -- }
+local m = require("..ut.map")
+
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
@@ -23,5 +25,16 @@ return {
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-  opts = {},
+  opts = {
+    -- enabled = false,
+  },
+  config = function()
+    require("render-markdown").enable()
+    require("render-markdown").buf_disable()
+  end,
+  m.mapN(
+    "<leader>p",
+    "<cmd>RenderMarkdown preview<CR>",
+    { desc = "Markdown preview" }
+  ),
 }

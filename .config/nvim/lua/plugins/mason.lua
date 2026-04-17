@@ -60,6 +60,7 @@ return {
         "prettierd", -- html
         "prettier", -- html
         "nginx-config-formatter", -- nginx
+        "docker-language-server", -- docker
         --- Linters -------------------------------------
         "golangci-lint", -- golang
         "luacheck", -- lua
